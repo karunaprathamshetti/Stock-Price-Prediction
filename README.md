@@ -1,72 +1,37 @@
-<div align="center">
-  
-  # ⚡ QUANTUM | AI Stock Predictor
-  
-  **Advanced Market Forecasting with LSTM Neural Networks**
+# Stock Price Prediction App
 
-  ![Python](https://img.shields.io/badge/Python-3.11-blue.svg?style=for-the-badge&logo=python&logoColor=white)
-  ![Streamlit](https://img.shields.io/badge/Streamlit-1.32.0-FF4B4B.svg?style=for-the-badge&logo=Streamlit&logoColor=white)
-  ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.16-FF6F00.svg?style=for-the-badge&logo=TensorFlow&logoColor=white)
-  ![Plotly](https://img.shields.io/badge/Plotly-Interactive-3F4F75.svg?style=for-the-badge&logo=Plotly&logoColor=white)
+Hey! This is a simple web app I built to predict stock prices using Python and Machine Learning. It uses Streamlit for the frontend so everything runs directly in the browser. 
 
-  <p align="center">
-    A fully responsive, glassmorphic web dashboard built to predict stock market trends using 
-    real-time financial data and deep learning.
-  </p>
-</div>
+The core idea is pretty straightforward: it grabs the latest historical stock data from Yahoo Finance and feeds it into an LSTM (Long Short-Term Memory) neural network to forecast the closing prices for the next 7 days. I also added a standard Linear Regression model alongside it just to compare how a basic algorithm performs against the deep learning model.
 
----
+### What it does:
+* Lets you enter any stock ticker (like AAPL or TSLA) and pull historical data on the fly.
+* Shows you interactive charts (built with Plotly) so you can zoom in on past trends.
+* Trains an LSTM network on your machine to guess the next 7 days.
+* Spits out metrics (RMSE, MAPE) so you can see how inaccurate/accurate the models actually were on the test data before trusting the future prediction.
 
-## 🌟 Key Features
+### How to run it locally
 
-- **Live Data Integration:** Instantaneously fetches historical stock tracking data via the Yahoo Finance API.
-- **Deep Learning Forecasting:** Utilizes Long Short-Term Memory (LSTM) recurrent neural networks to generate complex 7-day future price predictions.
-- **Interactive UI/UX:** Features a sleek dark mode, glowing accents, day-over-day live metric delta blocks, and heavily organized UI tabs.
-- **Model Verification:** Simultaneously computes predictions against a Linear Regression model, displaying live `RMSE` and `MAPE` statistical evaluations.
-- **Dynamic Charting:** Full Plotly integration with toggleable Confidence Intervals and transparent layout embedding.
+If you want to run this on your own machine instead of the cloud, here's how:
 
-## 🛠️ Technology Stack
-| Layer | Technology |
-| --- | --- |
-| **Frontend** | Streamlit, Custom HTML/CSS (Glassmorphism) |
-| **AI / Machine Learning** | TensorFlow (Keras), Scikit-Learn |
-| **Data Processing** | Pandas, Numpy |
-| **Data Source** | `yfinance` API |
-| **Visualizations** | Plotly Graph Objects |
+1. Clone this repo to your computer.
+2. (Optional but recommended) Set up a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # on Windows run: venv\Scripts\activate
+   ```
+3. Install the required Python packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Start the Streamlit server:
+   ```bash
+   python -m streamlit run app.py
+   ```
+   
+The app should automatically pop up in your browser at `localhost:8501`. 
 
----
+### Cloud Deployment
+I've already set it up so it can be deployed for free on Streamlit Community Cloud. The `.python-version` file ensures that Streamlit uses Python 3.11, which avoids some nasty compilation errors with TensorFlow. Just connect your GitHub to Streamlit, point it to `app.py`, and hit deploy.
 
-## 🚀 Local Installation
-
-#### 1. Clone the repository
-```bash
-git clone https://github.com/YourUsername/stock-prediction-app.git
-cd stock-prediction-app
-```
-
-#### 2. Create a Virtual Environment (Optional but Recommended)
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
-```
-
-#### 3. Install Dependencies
-```bash
-pip install -r requirements.txt
-```
-
-#### 4. Launch the AI Dashboard
-```bash
-python -m streamlit run app.py
-```
-*The Streamlit web server will start exactly on `localhost:8501:8501`*
-
----
-
-## ☁️ Cloud Deployment (Streamlit Community)
-
-This application is fully pre-configured for free permanent deployment via [Streamlit Community Cloud](https://share.streamlit.io/).
-The repository includes a `.python-version` file to explicitly ensure stable TensorFlow Linux compilation during automated remote server builds.
-
-## 📄 License
-This project is for educational and demonstrative purposes only. Machine Learning stock forecasts do not constitute financial advice.
+***Note:** Just a quick disclaimer that this is a personal project for learning ML. Please don't use this as actual financial advice to trade real money.*
