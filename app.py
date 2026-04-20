@@ -8,7 +8,7 @@ from data_handler import fetch_data, prepare_data_for_lstm, prepare_data_for_lr
 from models import build_and_train_lstm, build_and_train_lr, predict_next_days_lstm, predict_next_days_lr
 from utils import calculate_metrics, plot_stock_data, plot_predictions, plot_confidence_intervals
 
-st.set_page_config(page_title="QUANTUM | Stock Predictor", layout="wide", page_icon="⚡")
+st.set_page_config(page_title="Stock Price Prediction", layout="wide", page_icon="📈")
 
 # Custom CSS for Glassmorphism, animations, and modern aesthetics
 st.markdown("""
@@ -99,7 +99,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.title("⚡ QUANTUM Predictor")
+st.title("📈 Stock Price Prediction")
 st.markdown("Advanced AI-driven market forecasting with LSTM Neural Networks.")
 
 # Settings Sidebar / Top row
@@ -143,6 +143,8 @@ if predict_btn:
         
         with tab1:
             st.plotly_chart(plot_stock_data(df, ticker), use_container_width=True)
+            with st.expander("📂 View Raw Dataset (Tabular Format)"):
+                st.dataframe(df, use_container_width=True)
             
         with st.spinner("Compiling Neural Network and mapping tensors..."):
             look_back = min(60, len(df) // 4)
